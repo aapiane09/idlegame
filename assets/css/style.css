@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Kimberley";
+  src: url(assets/fonts/ufonts.com_impact.ttf) format("truetype");
+  }
+
+body {
+  background-color: black;
+  }
+
+h1 {
+  font-family: Impact, sans-serif;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  }
+
+#points {
+  font-family: Impact, sans-serif;
+  color: white;
+  font-size: 3em;
+  text-align: left;
+}
