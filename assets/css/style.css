@@ -44,6 +44,26 @@ img.resize {
   background-color: #800000;
 }
 
+.modal-content {
+  border: 10px white solid;
+  background: black;
+  color: white;
+  font-family: Impact, sans-serif;
+  font-size: 4em;
+  line-height: 50px;
+  text-align: center;
+}
+
+#congrats {
+  font-size: 2em;
+  display: inline-block;
+  padding-top: 70px;
+}
+
+#success {
+  height: 300px;
+}
+
 #red {
   text-align: right;
 }

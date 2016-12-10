@@ -1,6 +1,6 @@
 $('document').ready(function () {
 //POINTS INCREMENTATION
-var points = 145;
+var points = 0;
 $('#points').text(points);
 var tick;
 
@@ -11,17 +11,33 @@ function tickStart () {
 function incrementPoints () {
   points += 1;
   $('#points').text(points);
-  $('#red').html('');
+  if (points >= 3000) {
+    $('#button').removeAttr('disabled');
+    winGame();
+  };
+  $('#red').html('<img class="resize" src="assets/images/placeholder.png">');
   $('#green').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
 }
 //Stop incrementation and show tick status via #red gif
 function stopTick () {
   clearInterval(tick);
-  $('#green').html('');
+  $('#green').html('<img class="resize" src="assets/images/placeholder.png">');
   $('#red').html('<img class="resize" src="assets/images/mario-die.gif">');
 }
+
 tickStart();
 
+function winGame (){
+$('#button').click (function (){
+  $('#points').remove();
+  $('#green').remove();
+  $('#red').remove();
+  $('#elapsed_time').remove();
+  stopTick();
+  $('#button').modal('show');
+  $('#button').remove();
+  });
+};
 
 //EVENT LISTENERS
 //Stop and restart upon mouse movement
