@@ -63,3 +63,4 @@ http://imgur.com/a/AEayR
 <li>Have a multiplier based on how long you've gone without triggering event listeners</li>
 <li>Set a three second window in between triggering an event listener and reinitiating the increment function</li>
 <li>Set toggleable background music</li>
+<li>Set event listener to click R to reset game without refreshing window</li>
