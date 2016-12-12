@@ -2,6 +2,11 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
 @font-face {
   font-family: "Kimberley";
   src: url(assets/fonts/ufonts.com_impact.ttf) format("truetype");
@@ -27,21 +32,30 @@ h1 {
   line-height: 500px;
 }
 
+.powerup {
+  margin: 50px 0px 50px 50px;
+}
+
+#loUpgrade, #medUpgrade, #hiUpgrade {
+  width: 200px;
+  font-family: Impact, sans-serif;
+  font-size: 2em;
+}
+
 img.resize {
   max-width: 250px;
   border-radius: 20px;
+  margin-left: 100px;
 }
 
-#green {
-  text-align: left;
-}
-
-.btn {
+#winbutton {
   height: 200px;
   margin-top: 150px;
   border: 5px solid #64180f;
   border-radius: 20px;
   background-color: #800000;
+  font-family: Impact, sans-serif;
+  font-size: 8em;
 }
 
 .modal-content {
@@ -62,10 +76,6 @@ img.resize {
 
 #success {
   height: 300px;
-}
-
-#red {
-  text-align: right;
 }
 
 .footer {

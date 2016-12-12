@@ -1,6 +1,6 @@
 $('document').ready(function () {
 //POINTS INCREMENTATION
-var points = 0;
+var points = 2999;
 $('#points').text(points);
 var tick;
 
@@ -12,30 +12,26 @@ function incrementPoints () {
   points += 1;
   $('#points').text(points);
   if (points >= 3000) {
-    $('#button').removeAttr('disabled');
+    $('section').html('<button type="button" id="winbutton" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary btn-lg btn-block btn-danger">WIN</button>');
     winGame();
   };
-  $('#red').html('<img class="resize" src="assets/images/placeholder.png">');
-  $('#green').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
+  $('#gif').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
 }
 //Stop incrementation and show tick status via #red gif
 function stopTick () {
   clearInterval(tick);
-  $('#green').html('<img class="resize" src="assets/images/placeholder.png">');
-  $('#red').html('<img class="resize" src="assets/images/mario-die.gif">');
+  $('#gif').html('<img class="resize" src="assets/images/mario-die.gif">');
 }
 
 tickStart();
 
 function winGame (){
-$('#button').click (function (){
+$('#winbutton').click (function (){
   $('#points').remove();
-  $('#green').remove();
-  $('#red').remove();
+  $('#gif').remove();
   $('#elapsed_time').remove();
-  stopTick();
-  $('#button').modal('show');
-  $('#button').remove();
+  $('#winbutton').modal('show');
+  $('#winbutton').remove();
   });
 };
 
