@@ -1,6 +1,6 @@
 $('document').ready(function () {
 //POINTS INCREMENTATION
-var points = 3500;
+var points = 0;
 $('#points').text(points);
 var tick;
 
@@ -16,35 +16,59 @@ var lowCost = 200;
 var medCost = 500;
 var hiCost = 1000;
 
+
+//Upgrade functions -
 $('#loUpgrade').click (function lowUp(){
   points = points - lowCost;
-  multiplier = multiplier * lowMulti;
+  multiplier = multiplier + lowMulti;
   $('#multiplier').text(multiplier);
 });
 $('#medUpgrade').click (function medUp(){
   points = points - medCost;
-  multiplier = multiplier * medMulti;
+  multiplier = multiplier + medMulti;
   $('#multiplier').text(multiplier);
 });
 $('#hiUpgrade').click (function hiUp(){
   points = points - hiCost;
-  multiplier = multiplier * hiMulti;
+  multiplier = multiplier + hiMulti;
   $('#multiplier').text(multiplier);
 });
 
 //Begin incrementation of points and show tick status via #green gif
 function tickStart () {
-  tick = window.setInterval(incrementPoints, 500);
+  tick = window.setInterval(incrementPoints, 150);
 }
 function incrementPoints () {
-  points += (1 * multiplier);
-  $('#points').text(points);
+  points += (.1 * multiplier);
+  $('#points').text(Math.round(points));
+  $('#gif').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
+  if (points >= lowCost) {
+    $('#loUpgrade').removeAttr('disabled');
+  }
+  else {
+    $('#loUpgrade').attr('disabled', 'disabled');
+  };
+  if (points >= medCost) {
+    $('#medUpgrade').removeAttr('disabled');
+  }
+  else if (points < medCost) {
+    $('#medUpgrade').attr('disabled', 'disabled');
+  };
+  if (points >= hiCost) {
+    $('#hiUpgrade').removeAttr('disabled');
+  }
+  else if (points < hiCost) {
+    $('#hiUpgrade').attr('disabled', 'disabled');
+  };
   if (points >= 3000) {
     $('section').html('<button type="button" id="winbutton" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary btn-lg btn-block btn-danger">WIN</button>');
-    winGame();
+    winGame()
+  }
+  else {
+    $('section').html('<section><img src="assets/images/placeholder.png"></section>');
   };
-  $('#gif').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
-}
+};
+
 //Stop incrementation and show tick status via #red gif
 function stopTick () {
   clearInterval(tick);
@@ -55,11 +79,11 @@ tickStart();
 
 function winGame (){
 $('#winbutton').click (function (){
-  $('#points').remove();
+  $('.footer').remove();
   $('#gif').remove();
-  $('#elapsed_time').remove();
   $('#winbutton').modal('show');
   $('#winbutton').remove();
+  $('.powerup').remove();
   });
 };
 
