@@ -34,7 +34,7 @@ $('#hiUpgrade').click (function hiUp(){
   $('#multiplier').text(multiplier);
 });
 
-//Begin incrementation of points and show tick status via #green gif
+//Begin incrementation of points, show tick status via #green gif
 function tickStart () {
   tick = window.setInterval(incrementPoints, 150);
 }
@@ -42,6 +42,7 @@ function incrementPoints () {
   points += (.1 * multiplier);
   $('#points').text(Math.round(points));
   $('#gif').html('<img class="resize" src="assets/images/mario-coins.gif">');                            //ADD IN #GREEN VIA DOM MANIP
+//Toggle clickability of upgrades
   if (points >= lowCost) {
     $('#loUpgrade').removeAttr('disabled');
   }
@@ -60,7 +61,8 @@ function incrementPoints () {
   else if (points < hiCost) {
     $('#hiUpgrade').attr('disabled', 'disabled');
   };
-  if (points >= 3000) {
+//Show button to win game
+  if (points >= 10000) {
     $('section').html('<button type="button" id="winbutton" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary btn-lg btn-block btn-danger">WIN</button>');
     winGame()
   }
@@ -151,7 +153,3 @@ function startWatch( ) {
 //    /* you need to bind the startTime( ) function to any event type to keep the stop watch alive ! */
 //    window.addEventListener( 'load', function ( ) { var start = document .getElementById("start"); start.addEventListener( 'click', startTime ); });
 //    startwatch.js end
-//
-// var lowCost = multiplier >= 3 ? 60 : 30;
-// var medCost = multiplier >= 3 ? 200 : 100;
-// var hiCost = multiplier >= 3 ? 360  : 180;
