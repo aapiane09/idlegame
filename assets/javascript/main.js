@@ -1,15 +1,43 @@
 $('document').ready(function () {
 //POINTS INCREMENTATION
-var points = 2999;
+var points = 3500;
 $('#points').text(points);
 var tick;
 
+//MULTIPLIER VARIABLES
+var multiplier = 1;
+var lowMulti = 2;
+var medMulti = 5;
+var hiMulti = 10;
+$('#multiplier').text(multiplier);
+
+//UPGRADE COST VARIABLES
+var lowCost = 200;
+var medCost = 500;
+var hiCost = 1000;
+
+$('#loUpgrade').click (function lowUp(){
+  points = points - lowCost;
+  multiplier = multiplier * lowMulti;
+  $('#multiplier').text(multiplier);
+});
+$('#medUpgrade').click (function medUp(){
+  points = points - medCost;
+  multiplier = multiplier * medMulti;
+  $('#multiplier').text(multiplier);
+});
+$('#hiUpgrade').click (function hiUp(){
+  points = points - hiCost;
+  multiplier = multiplier * hiMulti;
+  $('#multiplier').text(multiplier);
+});
+
 //Begin incrementation of points and show tick status via #green gif
 function tickStart () {
-  tick = window.setInterval(incrementPoints, 3000);
+  tick = window.setInterval(incrementPoints, 500);
 }
 function incrementPoints () {
-  points += 1;
+  points += (1 * multiplier);
   $('#points').text(points);
   if (points >= 3000) {
     $('section').html('<button type="button" id="winbutton" data-toggle="modal" data-target=".bs-example-modal-lg" class="btn btn-primary btn-lg btn-block btn-danger">WIN</button>');
@@ -99,3 +127,7 @@ function startWatch( ) {
 //    /* you need to bind the startTime( ) function to any event type to keep the stop watch alive ! */
 //    window.addEventListener( 'load', function ( ) { var start = document .getElementById("start"); start.addEventListener( 'click', startTime ); });
 //    startwatch.js end
+//
+// var lowCost = multiplier >= 3 ? 60 : 30;
+// var medCost = multiplier >= 3 ? 200 : 100;
+// var hiCost = multiplier >= 3 ? 360  : 180;
