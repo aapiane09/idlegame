@@ -1,6 +1,6 @@
 $('document').ready(function () {
 //POINTS INCREMENTATION
-var points = 0;
+var points = 20000;
 $('#points').text(points);
 var tick;
 
@@ -9,7 +9,7 @@ var multiplier = 1;
 var lowMulti = 2;
 var medMulti = 5;
 var hiMulti = 10;
-$('#multiplier').text(multiplier);
+$('#multiplier').text('x' + multiplier);
 
 //UPGRADE COST VARIABLES
 var lowCost = 200;
@@ -21,17 +21,17 @@ var hiCost = 1000;
 $('#loUpgrade').click (function lowUp(){
   points = points - lowCost;
   multiplier = multiplier + lowMulti;
-  $('#multiplier').text(multiplier);
+  $('#multiplier').text('x' + multiplier);
 });
 $('#medUpgrade').click (function medUp(){
   points = points - medCost;
   multiplier = multiplier + medMulti;
-  $('#multiplier').text(multiplier);
+  $('#multiplier').text('x' + multiplier);
 });
 $('#hiUpgrade').click (function hiUp(){
   points = points - hiCost;
   multiplier = multiplier + hiMulti;
-  $('#multiplier').text(multiplier);
+  $('#multiplier').text('x' + multiplier);
 });
 
 //Begin incrementation of points, show tick status via #green gif
